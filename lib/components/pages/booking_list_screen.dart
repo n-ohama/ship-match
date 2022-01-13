@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/organisms/booking_list.dart';
 
-class ListDataScreen extends StatelessWidget {
+class BookingListScreen extends StatelessWidget {
   static const routeName = '/listDataScreen';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Demo Home Page', style: TextStyle(color: Colors.black)),
+        title: const Text('Flutter Demo', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
-        elevation: .3,
+        elevation: .5,
       ),
       body: BookingList(),
       floatingActionButton: FloatingActionButton(

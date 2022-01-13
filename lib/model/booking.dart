@@ -22,26 +22,26 @@ class Booking {
     required this.leaveDateTime, required this.price, required this.address,
     required this.requireNumber, required this.capacity, this.target,
     required this.memberList, this.picture, required this.ownerId,
-    required this.createdAt, required this.updatedAt
+    required this.createdAt, required this.updatedAt,
   });
 
   //Firebaseからデータを取得する際の変換処理
-  Booking.fromJson(Map<String, Object?> json)
+  Booking.fromJson(Map<String, dynamic> json)
       : this(
-    id: json['id'] as String,
-    title: json['title']! as String,
-    owner: json['owner']! as String,
-    leaveDateTime: json['leaveDateTime'] as DateTime,
-    price: json['price'] as int,
-    address: json['address'] as String,
-    requireNumber: json['requireNumber'] as int,
-    capacity: json['capacity'] as int,
-    target: json['target'] as String,
-    memberList: json['memberList'] as List<String>,
-    picture: json['picture'] as String,
-    ownerId: json['ownerId'] as String,
-    createdAt: json['createdAt'] as DateTime,
-    updatedAt: json['updatedAt'] as DateTime,
+    id: json['id'],
+    title: json['title'],
+    owner: json['owner'],
+    leaveDateTime: json['leaveDateTime'].toDate(),
+    price: json['price'],
+    address: json['address'],
+    requireNumber: json['requireNumber'],
+    capacity: json['capacity'],
+    target: json['target'] ?? '',
+    memberList: json['memberList'].cast<String>(),
+    picture: json['picture'],
+    ownerId: json['ownerId'],
+    createdAt: json['createdAt'].toDate(),
+    updatedAt: json['updatedAt'].toDate(),
   );
 
   //DartのオブジェクトからFirebaseへ渡す際の変換処理

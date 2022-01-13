@@ -9,14 +9,17 @@ class BookingList extends ConsumerWidget {
     final bookingList = ref.watch(listDataStreamProvider);
     return bookingList.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, _) => const Text('error'),
+      error: (error, _) => Center(child: Text(error.toString())),
       data: (bookingList) {
-        return ListView.builder(
+        return ListView.separated(
           itemCount: bookingList.length,
           itemBuilder: (_, int index) {
             final booking = bookingList[index];
-            return BookingTile(title: booking.title, subtitle: booking.owner);
+            return BookingTile(
+              id: booking.id, title: booking.title, userName: booking.owner,
+            );
           },
+          separatorBuilder: (_, __) => Divider(thickness: .5, height: 1),
         );
       }
     );

@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myapp/components/pages/list_data_screen.dart';
+import 'package:myapp/components/pages/booking_detail_screen.dart';
+import 'package:myapp/components/pages/booking_list_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,10 +19,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: ListDataScreen(),
+      home: BookingListScreen(),
       routes: {
-        ListDataScreen.routeName: (_) => ListDataScreen(),
+        BookingListScreen.routeName: (_) => BookingListScreen(),
+        BookingDetailScreen.routeName: (_) => BookingDetailScreen(),
       },
     );
   }
 }
+
+// TODO: ログイン画面を作る
+// TODO: 新規投稿画面を作る(改行ありのタイトルを入力できるようにする)
