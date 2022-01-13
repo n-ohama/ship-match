@@ -11,7 +11,7 @@ class BookingDetailScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: .3,
       ),
-      body: const BookingDetail(),
+      body: const BookingDetail(bookingId: 'bookingId'),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
         child: const Icon(Icons.add),
