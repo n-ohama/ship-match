@@ -19,7 +19,7 @@ class BookingList extends ConsumerWidget {
               id: booking.id, title: booking.title, userName: booking.owner,
             );
           },
-          separatorBuilder: (_, __) => Divider(thickness: .5, height: 1),
+          separatorBuilder: (_, __) => const Divider(thickness: .5, height: 1),
         );
       }
     );

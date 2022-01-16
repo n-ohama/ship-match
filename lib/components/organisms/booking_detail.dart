@@ -45,15 +45,7 @@ class BookingDetail extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('オーナー', style: bigFontStyle),
-                  Text(booking.owner, style: bigFontStyle),
-                ],
-              ),
-              const Divider(height: 1),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('料金(参加者で割り勘)', style: bigFontStyle),
+                  const Text('料金 (1人あたり)', style: bigFontStyle),
                   Text('${booking.price}円', style: bigFontStyle),
                 ],
               ),
@@ -71,14 +63,6 @@ class BookingDetail extends ConsumerWidget {
                 children: [
                   const Text('日付', style: bigFontStyle),
                   Text('${booking.leaveDateTime}', style: bigFontStyle),
-                ],
-              ),
-              const Divider(height: 1),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('狙い', style: bigFontStyle),
-                  Text('${booking.target}', style: bigFontStyle),
                 ],
               ),
             ],

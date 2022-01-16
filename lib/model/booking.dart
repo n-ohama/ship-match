@@ -36,7 +36,7 @@ class Booking {
     address: json['address'],
     requireNumber: json['requireNumber'],
     capacity: json['capacity'],
-    target: json['target'] ?? '',
+    target: json['target'],
     memberList: json['memberList'].cast<String>(),
     picture: json['picture'],
     ownerId: json['ownerId'],
@@ -49,6 +49,18 @@ class Booking {
     return {
       'id': id,
       'title': title,
+      'owner': owner,
+      'leaveDateTime': leaveDateTime,
+      'price': price,
+      'address': address,
+      'requireNumber': requireNumber,
+      'capacity': capacity,
+      'target': target,
+      'memberList': memberList,
+      'picture': picture,
+      'ownerId': ownerId,
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
     };
   }
 }
