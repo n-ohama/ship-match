@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BookingRequiredField extends StatelessWidget {
+class BookingTextFormField extends StatelessWidget {
   final Function(String) onPress;
   final String label;
   final String hint;
-  const BookingRequiredField({
+  const BookingTextFormField({
     required this.onPress, required this.label, this.hint = '',
   });
 
@@ -13,7 +13,6 @@ class BookingRequiredField extends StatelessWidget {
     final _focusNode = FocusNode();
 
     return Column(
-      // mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
           width: double.infinity,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/organisms/booking_list.dart';
-import 'package:myapp/components/pages/booking_add_required_fields_screen.dart';
+import 'package:myapp/components/pages/booking_first_text_fields_screen.dart';
 
 class BookingListScreen extends StatelessWidget {
   static const routeName = '/bookingListScreen';
@@ -14,7 +14,7 @@ class BookingListScreen extends StatelessWidget {
       ),
       body: BookingList(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, BookingAddRequiredFieldsScreen.routeName),
+        onPressed: () => Navigator.pushNamed(context, BookingFirstTextFieldsScreen.routeName),
         child: const Icon(Icons.add),
       ),
     );

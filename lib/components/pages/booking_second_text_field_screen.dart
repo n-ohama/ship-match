@@ -5,20 +5,21 @@ import 'package:myapp/components/pages/booking_list_screen.dart';
 import 'package:myapp/model/booking.dart';
 import 'package:myapp/model/booking_text_field.dart';
 import 'package:myapp/provider/title_text_field_provider.dart';
+import 'package:uuid/uuid.dart';
 
-class BookingAddTitleScreen extends ConsumerWidget {
-  static const routeName = '/bookingAddScreen';
+class BookingSecondTextFieldScreen extends ConsumerWidget {
+  static const routeName = '/bookingSecondTextFieldScreen';
   
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _provider = ref.watch(titleTextFieldProvider.notifier);
-    final titleTextField = ref.watch(titleTextFieldProvider);
+    final _titleTextField = ref.watch(titleTextFieldProvider);
     
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.blue),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.popUntil(context, ModalRoute.withName(BookingListScreen.routeName)),
         ),
         actions: [
           Padding(
@@ -29,13 +30,13 @@ class BookingAddTitleScreen extends ConsumerWidget {
                 primary: Colors.blue,
                 shape: const StadiumBorder(),
               ),
-              onPressed: titleTextField.isEmpty ? null : () {
-                final bookId = 'flutterIsTheBest';
-                final owner = 'owner';
+              onPressed: _titleTextField.isEmpty ? null : () {
+                final uuid = const Uuid().v4();
+                const owner = 'owner';
                 final now = DateTime.now();
-                final requireTextField = BookingTextField.instance;
+                final requireTextField = BookingFirstInputs.instance;
                 final Booking booking = Booking(
-                  id: bookId, title: titleTextField, owner: owner,
+                  id: uuid, title: _titleTextField, owner: owner,
                   leaveDateTime: requireTextField.leaveDay, price: requireTextField.price!,
                   address: requireTextField.address!, requireNumber: requireTextField.requireNumber!,
                   capacity: requireTextField.capacity!, memberList: const [], ownerId: owner,

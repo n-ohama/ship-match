@@ -1,6 +1,6 @@
-class BookingTextField {
-  BookingTextField._();
-  static final instance = BookingTextField._();
+class BookingFirstInputs {
+  BookingFirstInputs._();
+  static final instance = BookingFirstInputs._();
 
   int? price;
   String? address;

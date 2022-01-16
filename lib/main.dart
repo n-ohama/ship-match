@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myapp/components/pages/booking_add_required_fields_screen.dart';
-import 'package:myapp/components/pages/booking_add_title_screen.dart';
+import 'package:myapp/components/pages/booking_first_text_fields_screen.dart';
+import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
 import 'package:myapp/components/pages/booking_detail_screen.dart';
 import 'package:myapp/components/pages/booking_list_screen.dart';
 
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       routes: {
         BookingListScreen.routeName: (_) => BookingListScreen(),
         BookingDetailScreen.routeName: (_) => BookingDetailScreen(),
-        BookingAddTitleScreen.routeName: (_) => BookingAddTitleScreen(),
-        BookingAddRequiredFieldsScreen.routeName: (_) => BookingAddRequiredFieldsScreen(),
+        BookingFirstTextFieldsScreen.routeName: (_) => BookingFirstTextFieldsScreen(),
+        BookingSecondTextFieldScreen.routeName: (_) => BookingSecondTextFieldScreen(),
       },
     );
   }

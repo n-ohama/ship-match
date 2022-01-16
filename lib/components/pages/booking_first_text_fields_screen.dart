@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/components/organisms/booking_required_field.dart';
-import 'package:myapp/components/pages/booking_add_title_screen.dart';
+import 'package:myapp/components/organisms/booking_text_form_field.dart';
+import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
 import 'package:myapp/model/booking_text_field.dart';
 
-class BookingAddRequiredFieldsScreen extends StatelessWidget {
-  static const routeName = '/bookingAddRequiredFieldsScreen';
+class BookingFirstTextFieldsScreen extends StatelessWidget {
+  static const routeName = '/bookingFirstTextFieldsScreen';
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,8 @@ class BookingAddRequiredFieldsScreen extends StatelessWidget {
                 shape: const StadiumBorder(),
               ),
               onPressed: () {
-                _formKey.currentState?.save();
-                Navigator.pushNamed(context, BookingAddTitleScreen.routeName);
+                // _formKey.currentState?.save();
+                Navigator.pushNamed(context, BookingSecondTextFieldScreen.routeName);
               }
             ),
           ),
@@ -41,25 +41,24 @@ class BookingAddRequiredFieldsScreen extends StatelessWidget {
           child: Form(
             key: _formKey,
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               children: [
-                BookingRequiredField(
+                BookingTextFormField(
                   label: '料金',
                   hint: 'ex) 2000',
-                  onPress: (value) => BookingTextField.instance.price = int.parse(value),
+                  onPress: (value) => BookingFirstInputs.instance.price = int.parse(value),
                 ),
-                BookingRequiredField(
+                BookingTextFormField(
                   label: '出港場所',
                   hint: '沖縄県宜野湾市大山　新漁港',
-                  onPress: (value) => BookingTextField.instance.address = value,
+                  onPress: (value) => BookingFirstInputs.instance.address = value,
                 ),
-                BookingRequiredField(
+                BookingTextFormField(
                   label: '必要人数',
-                  onPress: (value) => BookingTextField.instance.requireNumber = int.parse(value),
+                  onPress: (value) => BookingFirstInputs.instance.requireNumber = int.parse(value),
                 ),
-                BookingRequiredField(
+                BookingTextFormField(
                   label: '最大人数',
-                  onPress: (value) => BookingTextField.instance.capacity = int.parse(value),
+                  onPress: (value) => BookingFirstInputs.instance.capacity = int.parse(value),
                 ),
               ],
             ),

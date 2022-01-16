@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/pages/booking_detail_screen.dart';
 
-class BookingTile extends StatelessWidget {
-  const BookingTile({
+class BookingListTile extends StatelessWidget {
+  const BookingListTile({
     Key? key, required this.id, required this.title, required this.userName,
   }) : super(key: key);
   final String id;

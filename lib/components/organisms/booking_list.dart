@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myapp/components/atoms/booking_tile.dart';
+import 'package:myapp/components/atoms/booking_list_tile.dart';
 import 'package:myapp/provider/list_data_stream_provider.dart';
 
 class BookingList extends ConsumerWidget {
@@ -15,7 +15,7 @@ class BookingList extends ConsumerWidget {
           itemCount: bookingList.length,
           itemBuilder: (_, int index) {
             final booking = bookingList[index];
-            return BookingTile(
+            return BookingListTile(
               id: booking.id, title: booking.title, userName: booking.owner,
             );
           },
