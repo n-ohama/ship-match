@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/organisms/booking_text_form_field.dart';
 import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
-import 'package:myapp/model/booking_text_field.dart';
 
 class BookingFirstTextFieldsScreen extends StatelessWidget {
   static const routeName = '/bookingFirstTextFieldsScreen';
@@ -9,11 +8,18 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
+    Map<String, dynamic> _inputData = {
+      'price': 0,
+      'address': '',
+      'requireNumber': 0,
+      'capacity': 0,
+      'leaveDay': DateTime(2022),
+    };
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 100,
         leading: TextButton(
-          child: const Text('キャンセル', style: TextStyle(color: Colors.grey)),
+          child: const Text('キャンセル', style: TextStyle(color: Colors.blueGrey)),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
@@ -26,8 +32,16 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
                 shape: const StadiumBorder(),
               ),
               onPressed: () {
-                // _formKey.currentState?.save();
-                Navigator.pushNamed(context, BookingSecondTextFieldScreen.routeName);
+                if (!_formKey.currentState!.validate()) {
+                  return;
+                }
+
+                _formKey.currentState!.save();
+                // setState(() {});
+                Navigator.pushNamed(
+                  context, BookingSecondTextFieldScreen.routeName,
+                  arguments: _inputData
+                );
               }
             ),
           ),
@@ -45,20 +59,20 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
                 BookingTextFormField(
                   label: '料金',
                   hint: 'ex) 2000',
-                  onPress: (value) => BookingFirstInputs.instance.price = int.parse(value),
+                  onSavedFunc: (value) => _inputData['price'] = int.parse(value),
                 ),
                 BookingTextFormField(
                   label: '出港場所',
                   hint: '沖縄県宜野湾市大山　新漁港',
-                  onPress: (value) => BookingFirstInputs.instance.address = value,
+                  onSavedFunc: (value) => _inputData['address'] = value,
                 ),
                 BookingTextFormField(
                   label: '必要人数',
-                  onPress: (value) => BookingFirstInputs.instance.requireNumber = int.parse(value),
+                  onSavedFunc: (value) => _inputData['requireNumber'] = int.parse(value),
                 ),
                 BookingTextFormField(
                   label: '最大人数',
-                  onPress: (value) => BookingFirstInputs.instance.capacity = int.parse(value),
+                  onSavedFunc: (value) => _inputData['capacity'] = int.parse(value),
                 ),
               ],
             ),

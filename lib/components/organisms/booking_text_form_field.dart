@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BookingTextFormField extends StatelessWidget {
-  final Function(String) onPress;
+  final Function(String) onSavedFunc;
   final String label;
   final String hint;
   const BookingTextFormField({
-    required this.onPress, required this.label, this.hint = '',
+    required this.onSavedFunc, required this.label, this.hint = '',
   });
 
   @override
@@ -20,8 +20,15 @@ class BookingTextFormField extends StatelessWidget {
         ),
         TextFormField(
           focusNode: _focusNode,
+          keyboardType: label != '出港場所' ? TextInputType.number : null,
+          validator: (value) {
+            if(value!.trim().isEmpty) {
+              return '入力に不備があります。';
+            }
+            return null;
+          },
           onSaved: (text) {
-            onPress(text!);
+            onSavedFunc(text!);
             if(_focusNode.hasFocus) {
               _focusNode.unfocus();
             }
@@ -30,7 +37,7 @@ class BookingTextFormField extends StatelessWidget {
             hintText: hint,
             border: const OutlineInputBorder(),
             errorBorder:  const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 5),
+              borderSide: BorderSide(color: Colors.red),
             ),
           ),
         ),

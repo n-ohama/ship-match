@@ -19,7 +19,7 @@ class BookingDetailScreen extends StatelessWidget {
       body: BookingDetail(bookingId: id),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {},
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.send),
       ),
     );
   }

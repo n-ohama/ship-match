@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      home: BookingListScreen(),
+      initialRoute: BookingListScreen.routeName,
       routes: {
         BookingListScreen.routeName: (_) => BookingListScreen(),
         BookingDetailScreen.routeName: (_) => BookingDetailScreen(),
@@ -33,4 +33,4 @@ class MyApp extends StatelessWidget {
 }
 
 // TODO: ログイン画面を作る
-// TODO: 新規投稿画面を作る(改行ありのタイトルを入力できるようにする)
+// TODO: 新規投稿画面でleaveDayを
