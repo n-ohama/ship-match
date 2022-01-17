@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/components/atoms/date_time_picker_text_form_field.dart';
 import 'package:myapp/components/organisms/booking_text_form_field.dart';
 import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
 
@@ -57,14 +58,13 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
             child: Column(
               children: [
                 BookingTextFormField(
-                  label: '料金',
-                  hint: 'ex) 2000',
-                  onSavedFunc: (value) => _inputData['price'] = int.parse(value),
-                ),
-                BookingTextFormField(
                   label: '出港場所',
                   hint: '沖縄県宜野湾市大山　新漁港',
                   onSavedFunc: (value) => _inputData['address'] = value,
+                ),
+                BookingTextFormField(
+                  label: '料金',
+                  onSavedFunc: (value) => _inputData['price'] = int.parse(value),
                 ),
                 BookingTextFormField(
                   label: '必要人数',
@@ -73,6 +73,9 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
                 BookingTextFormField(
                   label: '最大人数',
                   onSavedFunc: (value) => _inputData['capacity'] = int.parse(value),
+                ),
+                DateTimePickerTextFormField(
+                  onSavedFunc: (value) => _inputData['leaveDay'] = value,
                 ),
               ],
             ),

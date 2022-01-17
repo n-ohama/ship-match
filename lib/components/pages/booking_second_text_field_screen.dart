@@ -30,7 +30,7 @@ class BookingSecondTextFieldScreen extends ConsumerWidget {
                 primary: Colors.blue,
                 shape: const StadiumBorder(),
               ),
-              onPressed: _title.isEmpty ? null : () {
+              onPressed: _title.trim().isEmpty ? null : () {
                 final uuid = const Uuid().v4();
                 const owner = 'owner';
                 final now = DateTime.now();
