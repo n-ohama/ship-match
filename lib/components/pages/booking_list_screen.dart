@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/components/organisms/booking_list.dart';
 import 'package:myapp/components/pages/booking_first_text_fields_screen.dart';
 import 'package:myapp/components/pages/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BookingListScreen extends StatelessWidget {
   static const routeName = '/list';
@@ -14,11 +15,11 @@ class BookingListScreen extends StatelessWidget {
         actions: [
           TextButton(
             child: const Text('ログアウト'),
-            onPressed: () {
-              FirebaseAuth.instance.signOut()
-                .then((_) {
-                  Navigator.pushReplacementNamed(context, LoginScreen.routeName);
-                });
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setBool('isLogin', false);
+              Navigator.pushReplacementNamed(context, LoginScreen.routeName);
             },
           )
         ],

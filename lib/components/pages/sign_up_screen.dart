@@ -4,33 +4,34 @@ import 'package:myapp/components/atoms/auth_text_field.dart';
 import 'package:myapp/components/pages/booking_list_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatelessWidget {
-  static const routeName = '/login';
+class SignUpScreen extends StatelessWidget {
+  static const routeName = '/signup';
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    Map<String, String> authData = {
+    Map<String, String> _authData = {
+      'name': '',
       'email': '',
       'password': '',
     };
 
-    void login(String email, String password) async {
+    void signUp(String email, String password, String name) async {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email, password: password
         );
-        final String? uid = userCredential.user?.uid;
-        if(uid != null) {
+        final User? user = userCredential.user;
+        await user?.updateDisplayName(name);
+        if(user?.uid != null) {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setBool('isLogin', true);
           Navigator.pushReplacementNamed(context, BookingListScreen.routeName);
         }
+
       } on FirebaseAuthException catch(e) {
         String errorMessage = '';
-        if (e.code == 'user-not-found') {
-          errorMessage = 'No user found for that email.';
-        } else if (e.code == 'wrong-password') {
-          errorMessage = 'Wrong password provided for that user.';
+        if (e.code == 'email-already-in-use') {
+          errorMessage = 'The account already exists for that email.';
         }
 
         showDialog(context: context, builder: (ctx) => AlertDialog(
@@ -60,18 +61,23 @@ class LoginScreen extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 AuthTextField(
-                  onSavedFunc: (text) => authData['email'] = text,
-                  label: 'メールアドレス'
+                  onSavedFunc: (text) => _authData['name'] = text,
+                  label: 'あなたのお名前',
                 ),
                 const SizedBox(height: 8),
                 AuthTextField(
-                  onSavedFunc: (text) => authData['password'] = text,
+                  onSavedFunc: (text) => _authData['email'] = text,
+                  label: 'メールアドレス',
+                ),
+                const SizedBox(height: 8),
+                AuthTextField(
+                  onSavedFunc: (text) => _authData['password'] = text,
                   label: 'パスワード', isPassword: true,
                 ),
                 const SizedBox(height: 8),
                 ElevatedButton(
                   child: const Text(
-                    'ログインする', style: TextStyle(fontSize: 16),
+                    '新規登録する', style: TextStyle(fontSize: 16),
                   ),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blue,
@@ -82,13 +88,13 @@ class LoginScreen extends StatelessWidget {
                       return;
                     }
                     _formKey.currentState!.save();
-                    login(authData['email']!, authData['password']!);
+                    signUp(_authData['email']!, _authData['password']!, _authData['name']!);
                   },
                 ),
                 TextButton(
-                  child: const Text('まだアカウントを持っていない'),
+                  child: const Text('すでにアカウントを持っている'),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/signup');
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                 )
               ],
