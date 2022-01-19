@@ -4,7 +4,7 @@ import 'package:myapp/components/organisms/booking_text_form_field.dart';
 import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
 
 class BookingFirstTextFieldsScreen extends StatelessWidget {
-  static const routeName = '/bookingFirstTextFieldsScreen';
+  static const routeName = '/first_inputs';
 
   @override
   Widget build(BuildContext context) {

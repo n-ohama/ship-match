@@ -7,7 +7,7 @@ import 'package:myapp/provider/title_text_field_provider.dart';
 import 'package:uuid/uuid.dart';
 
 class BookingSecondTextFieldScreen extends ConsumerWidget {
-  static const routeName = '/bookingSecondTextFieldScreen';
+  static const routeName = '/second_inputs';
   
   @override
   Widget build(BuildContext context, WidgetRef ref) {

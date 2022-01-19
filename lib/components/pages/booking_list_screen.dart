@@ -5,7 +5,7 @@ import 'package:myapp/components/pages/booking_first_text_fields_screen.dart';
 import 'package:myapp/components/pages/login_screen.dart';
 
 class BookingListScreen extends StatelessWidget {
-  static const routeName = '/bookingListScreen';
+  static const routeName = '/list';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +13,7 @@ class BookingListScreen extends StatelessWidget {
         title: const Text('Flutter Demo', style: TextStyle(color: Colors.black)),
         actions: [
           TextButton(
-            child: Text('ログアウト'),
+            child: const Text('ログアウト'),
             onPressed: () {
               FirebaseAuth.instance.signOut()
                 .then((_) {
