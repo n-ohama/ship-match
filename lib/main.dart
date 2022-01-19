@@ -5,6 +5,7 @@ import 'package:myapp/components/pages/booking_first_text_fields_screen.dart';
 import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
 import 'package:myapp/components/pages/booking_detail_screen.dart';
 import 'package:myapp/components/pages/booking_list_screen.dart';
+import 'package:myapp/components/pages/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      initialRoute: BookingListScreen.routeName,
+      initialRoute: LoginScreen.routeName,
       routes: {
+        LoginScreen.routeName: (_) => LoginScreen(),
         BookingListScreen.routeName: (_) => BookingListScreen(),
         BookingDetailScreen.routeName: (_) => BookingDetailScreen(),
         BookingFirstTextFieldsScreen.routeName: (_) => BookingFirstTextFieldsScreen(),

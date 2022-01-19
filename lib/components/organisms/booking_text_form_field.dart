@@ -20,6 +20,7 @@ class BookingTextFormField extends StatelessWidget {
         ),
         TextFormField(
           focusNode: _focusNode,
+          style: const TextStyle(fontSize: 14, height: 1),
           keyboardType: label != '出港場所' ? TextInputType.number : null,
           validator: (value) {
             if(value!.trim().isEmpty) {

@@ -36,7 +36,7 @@ class BookingSecondTextFieldScreen extends ConsumerWidget {
                 final now = DateTime.now();
                 final Booking booking = Booking(
                   id: uuid, title: _title, owner: owner,
-                  leaveDateTime: args['leaveDay'], price: args['price'],
+                  leaveDateTime: args['leaveDateTime'], price: args['price'],
                   address: args['address'], requireNumber: args['requireNumber'],
                   capacity: args['capacity'], memberList: const [], ownerId: owner,
                   createdAt: now, updatedAt: now);
@@ -58,7 +58,6 @@ class BookingSecondTextFieldScreen extends ConsumerWidget {
           autofocus: true,
           keyboardType: TextInputType.multiline,
           maxLines: null,
-          style: const TextStyle(fontSize: 18),
           decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: '投稿のタイトル',

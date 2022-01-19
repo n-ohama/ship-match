@@ -36,6 +36,7 @@ class _DateTimePickerTextFormFieldState extends State<DateTimePickerTextFormFiel
           child: Text('集合時間', textAlign: TextAlign.left),
         ),
         TextFormField(
+          style: const TextStyle(fontSize: 14),
           controller: _controller,
           readOnly: true,
           validator: (value) {
@@ -58,14 +59,12 @@ class _DateTimePickerTextFormFieldState extends State<DateTimePickerTextFormFiel
               onConfirm: (date) {
                 widget.onSavedFunc(date);
                 _controller.text = date.toString();
-                print('confirm $date');
               },
               currentTime: DateTime.now(),
               locale: LocaleType.jp,
             );
           },
         ),
-        const SizedBox(height: 16),
       ],
     );
   }

@@ -14,7 +14,7 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
       'address': '',
       'requireNumber': 0,
       'capacity': 0,
-      'leaveDay': DateTime(2022),
+      'leaveDateTime': DateTime(2022),
     };
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +75,7 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
                   onSavedFunc: (value) => _inputData['capacity'] = int.parse(value),
                 ),
                 DateTimePickerTextFormField(
-                  onSavedFunc: (value) => _inputData['leaveDay'] = value,
+                  onSavedFunc: (value) => _inputData['leaveDateTime'] = value,
                 ),
               ],
             ),

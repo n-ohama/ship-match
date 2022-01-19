@@ -18,7 +18,7 @@ class BookingListTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(Icons.account_circle_outlined, size: 56),
+            const Icon(Icons.account_circle_outlined, size: 48),
             const SizedBox(width: 4),
             Flexible(
               child: Column(
@@ -29,14 +29,14 @@ class BookingListTile extends StatelessWidget {
                       Expanded(
                         flex: 17,
                         child: Text(
-                          userName, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          userName, style: const TextStyle(fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const Expanded(flex: 3, child: Text('9時間', style: TextStyle(color: Colors.grey))),
                     ],
                   ),
-                  Text(title, style: const TextStyle(fontSize: 16)),
+                  Text(title),
                 ],
               ),
             ),
