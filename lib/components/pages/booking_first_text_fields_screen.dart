@@ -4,8 +4,6 @@ import 'package:myapp/components/organisms/booking_text_form_field.dart';
 import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
 
 class BookingFirstTextFieldsScreen extends StatelessWidget {
-  static const routeName = '/first_inputs';
-
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -39,9 +37,9 @@ class BookingFirstTextFieldsScreen extends StatelessWidget {
 
                 _formKey.currentState!.save();
                 // setState(() {});
-                Navigator.pushNamed(
-                  context, BookingSecondTextFieldScreen.routeName,
-                  arguments: _inputData
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => BookingSecondTextFieldScreen(_inputData)),
                 );
               }
             ),

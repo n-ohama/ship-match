@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:myapp/components/organisms/booking_detail.dart';
 
 class BookingDetailScreen extends StatelessWidget {
-  static const routeName = '/book_detail';
+  final String id;
+  const BookingDetailScreen(this.id);
   @override
   Widget build(BuildContext context) {
-    final id = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(

@@ -44,7 +44,10 @@ class BookingListTile extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, BookingDetailScreen.routeName, arguments: id);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => BookingDetailScreen(id)),
+        );
       },
     );
   }

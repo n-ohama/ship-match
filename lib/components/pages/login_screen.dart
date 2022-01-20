@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/components/atoms/auth_text_field.dart';
 import 'package:myapp/components/pages/booking_list_screen.dart';
+import 'package:myapp/components/pages/sign_up_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
-  static const routeName = '/login';
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -19,11 +20,18 @@ class LoginScreen extends StatelessWidget {
         UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email, password: password
         );
-        final String? uid = userCredential.user?.uid;
-        if(uid != null) {
+        final User? user = userCredential.user;
+        if(user != null) {
+          final myData = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
           SharedPreferences prefs = await SharedPreferences.getInstance();
           await prefs.setBool('isLogin', true);
-          Navigator.pushReplacementNamed(context, BookingListScreen.routeName);
+          await prefs.setStringList(
+            'auth_data', [user.uid, myData.data()!['name'], myData.data()!['email']]
+          );
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => BookingListScreen()),
+          );
         }
       } on FirebaseAuthException catch(e) {
         String errorMessage = '';
@@ -88,7 +96,10 @@ class LoginScreen extends StatelessWidget {
                 TextButton(
                   child: const Text('まだアカウントを持っていない'),
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/signup');
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => SignUpScreen()),
+                    );
                   },
                 )
               ],

@@ -1,11 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:myapp/components/pages/booking_first_text_fields_screen.dart';
-import 'package:myapp/components/pages/booking_second_text_field_screen.dart';
-import 'package:myapp/components/pages/booking_detail_screen.dart';
 import 'package:myapp/components/pages/booking_list_screen.dart';
-import 'package:myapp/components/pages/login_screen.dart';
 import 'package:myapp/components/pages/sign_up_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -45,18 +41,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.light(),
-      initialRoute: isLogin ? BookingListScreen.routeName : '/signup',
-      routes: {
-        SignUpScreen.routeName: (_) => SignUpScreen(),
-        LoginScreen.routeName: (_) => LoginScreen(),
-        BookingListScreen.routeName: (_) => BookingListScreen(),
-        BookingDetailScreen.routeName: (_) => BookingDetailScreen(),
-        BookingFirstTextFieldsScreen.routeName: (_) => BookingFirstTextFieldsScreen(),
-        BookingSecondTextFieldScreen.routeName: (_) => BookingSecondTextFieldScreen(),
-      },
+      home: isLogin ? BookingListScreen() : SignUpScreen(),
     );
   }
 }
 
-// TODO: ログイン画面を作る
-// TODO: 新規投稿画面でleaveDayを
+// TODO:

@@ -6,20 +6,24 @@ import 'package:myapp/components/pages/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class BookingListScreen extends StatelessWidget {
-  static const routeName = '/list';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Demo', style: TextStyle(color: Colors.black)),
         actions: [
-          TextButton(
-            child: const Text('ログアウト'),
+          IconButton(
+            icon: const Icon(Icons.logout, color: Colors.grey),
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              await prefs.setBool('isLogin', false);
-              Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+              final mydata = prefs.getStringList('auth_data');
+              print(mydata);
+              await prefs.clear();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => LoginScreen()),
+              );
             },
           )
         ],
@@ -28,7 +32,10 @@ class BookingListScreen extends StatelessWidget {
       ),
       body: BookingList(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, BookingFirstTextFieldsScreen.routeName),
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => BookingFirstTextFieldsScreen()),
+        ),
         child: const Icon(Icons.add),
       ),
     );
